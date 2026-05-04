@@ -52,7 +52,8 @@ public class EmployeeService {
 
     //? add employee POST
     public boolean addEmployee(Employee e){
-        return employees.stream().anyMatch(em -> em.getId() == e.getId()) ? false : employees.add(e) ? true : false;
+        return employees.stream()
+        .anyMatch(em -> em.getId() == e.getId()) ? false : employees.add(e) ? true : false;
     }
 
     //? remove employee by id DELETE
