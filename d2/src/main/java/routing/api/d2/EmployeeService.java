@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 //todo: tell spring that this is a service class and make an object of it to be used in the controller
 @Service
 public class EmployeeService {
-
-    List<Employee> employees = List.of(
+    //? Use arraList to store employees and be able to add and remove employees
+    List<Employee> employees = new ArrayList<>(List.of(
         new Employee("Alice", "Developer", 1),
         new Employee("Bob", "Designer", 2),
         new Employee("Charlie", "Manager", 3),
@@ -18,7 +18,7 @@ public class EmployeeService {
         new Employee("Peter", "DevOps", 6),
         new Employee("Joo", "DevOps", 7),
         new Employee("Besso", "Sofragy", 8)
-    );
+    ));
 
     //? get all employees
     public List<Employee> getAllEmployees() {
@@ -36,6 +36,10 @@ public class EmployeeService {
 
     //? get employees by department
     public List<Employee> getEmployeesByDepartment(String role) {
+
+                // List<Employee> result = employees.stream()
+        //     .filter(em -> em.getRole().equalsIgnoreCase(role))
+        //     .toList();
         List<Employee> result = new ArrayList<>();
         for(Employee e : employees) {
             if(e.getRole().equalsIgnoreCase(role))
@@ -44,5 +48,15 @@ public class EmployeeService {
             }
         }
         return result;
+    }
+
+    //? add employee POST
+    public boolean addEmployee(Employee e){
+        return employees.stream().anyMatch(em -> em.getId() == e.getId()) ? false : employees.add(e) ? true : false;
+    }
+
+    //? remove employee by id DELETE
+    public boolean removeEmployeeById(int id) {
+        return employees.removeIf(e -> e.getId() == id);
     }
 }
