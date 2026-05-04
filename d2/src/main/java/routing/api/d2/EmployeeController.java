@@ -46,11 +46,11 @@ public class EmployeeController {
 
     @GetMapping("/filter")
     public ResponseEntity<?> getEmployeesByDepartment(@RequestParam String role) {
-        List<Employee> Filterdemployees = employeeService.getEmployeesByDepartment(role);
-        if(Filterdemployees.isEmpty()) {
+        List<Employee> filterdemployees = employeeService.getEmployeesByDepartment(role);
+        if(filterdemployees.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No employees found in this department");
         }
-        return ResponseEntity.status(HttpStatus.OK).body(Filterdemployees);   
+        return ResponseEntity.status(HttpStatus.OK).body(filterdemployees);   
     }
 
     @PostMapping("/add")
