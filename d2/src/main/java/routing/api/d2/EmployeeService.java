@@ -60,4 +60,21 @@ public class EmployeeService {
     public boolean removeEmployeeById(int id) {
         return employees.removeIf(e -> e.getId() == id);
     }
+
+    //? Update employee by id PUT
+    public boolean updateEmployeeById(int id , Employee newEmployee) {
+        for (Employee e : employees) {
+            if (e.getId() == id) {
+                e.setName(newEmployee.getName());
+                e.setRole(newEmployee.getRole());
+                return true; 
+            }
+        }
+        return false;
+        // if(employees.removeIf(e ->e.getId() == id)) {
+        //     employees.add(newEmployee);
+        //     return true;
+        // }   
+        // return false;
+    }
 }

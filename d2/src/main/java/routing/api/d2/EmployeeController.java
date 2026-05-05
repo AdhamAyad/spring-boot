@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 
 @RestController
@@ -65,5 +67,12 @@ public class EmployeeController {
         return employeeService.removeEmployeeById(id) 
         ? ResponseEntity.status(HttpStatus.NO_CONTENT).build()
         : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    @PutMapping("/update/{id}")
+    ResponseEntity<?> updateEmpEntityById (@PathVariable int id , @RequestBody Employee newEmployee) {
+        return employeeService.updateEmployeeById(id, newEmployee) 
+        ? ResponseEntity.status(HttpStatus.OK).body("Employee Updated Successfully")
+        : ResponseEntity.status(HttpStatus.NOT_FOUND).body("Employee with this ID not found");
     }
 }
