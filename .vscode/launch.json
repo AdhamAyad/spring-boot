@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-D2Application<d2>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "routing.api.d2.D2Application",
+            "projectName": "d2",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
