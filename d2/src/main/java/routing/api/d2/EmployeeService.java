@@ -2,7 +2,6 @@ package routing.api.d2;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 //todo: tell spring that this is a service class and make an object of it to be used in the controller

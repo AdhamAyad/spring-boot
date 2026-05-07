@@ -1,15 +1,23 @@
 package routing.api.d2;
 
-// import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
+// import com.fasterxml.jackson.annotation.JsonProperty;
+@Entity
 public class Employee {
 
     //@JsonProperty("employee_name")
     private String name;
     private String role;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     // Constructor
+    public Employee() {}
     public Employee (String name, String role, int id) {
         this.name = name;
         this.role = role;
